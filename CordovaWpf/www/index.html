@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html lang='en'>
+	<head>
+        <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+		<title>Welcome to Cordova2</title>
+        <script src='cordova.win7.js'></script>
+        <script type="text/javascript" charset="utf-8">
+
+         // Call onDeviceReady when PhoneGap is loaded.
+         //
+         // At this point, the document has loaded but phonegap-1.0.0.js has not.
+         // When PhoneGap is loaded and talking with the native device,
+         // it will call the event `deviceready`.
+         // 
+         document.addEventListener("deviceready", onDeviceReady, false);
+
+         // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
+         //
+         function onDeviceReady() {
+             // Now safe to use the PhoneGap API
+             alert('onDeviceReady');
+         }
+
+         document.addEventListener("deviceready", onDeviceReady2, false);
+
+         // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
+         //
+         function onDeviceReady2() {
+             // Now safe to use the PhoneGap API
+             alert('onDeviceReady2');
+         }
+
+        </script>
+        
+
+	</head>
+
+	<body>
+        
+        <a href='dotnet.html'>DotNet</a><br>
+        <a href='device.html'>Device</a><br>
+        <a href='network.html'>Network</a><br>
+        <a href='accel_game.html'>Accelerometer</a><br>
+        <a href='capture.html'>Capture</a><br>
+        <a href='events.html'>Events</a><br>
+        <a href='notification.html'>Notification</a><br>
+        <a href='storage.html'>Storage</a><br>
+        <a href='file.html'>File</a><br>
+
+   </body>
+</html>

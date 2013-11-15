@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>IrwanReusableToolkits</id>
+    <version>1.0.0</version>
+    <title>Irwan Reusable Toolkits</title>
+    <authors>Irwansyah</authors>
+    <owners>Irwansyah</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>This is a group of reusable interfaces with it's concrete implementations.</description>
+    <releaseNotes />
+    <copyright>Irwansyah</copyright>
+    <language />
+  </metadata>
+</package>

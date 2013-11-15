@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>IrwanUnitTestFramework</id>
+    <version>1.0.0</version>
+    <authors>Irwansyah</authors>
+    <owners>Irwansyah</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>This is a unit test framework built on top of NUnit and RhinoMock.</description>
+    <copyright>@2013 Irwansyah</copyright>
+  </metadata>
+</package>
