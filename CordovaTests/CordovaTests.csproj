@@ -51,11 +51,13 @@
       <HintPath>..\packages\NUnitTestAdapter.1.0\lib\NUnit.VisualStudio.TestAdapter.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="Rhino.Mocks">
       <HintPath>..\packages\RhinoMocks.3.6.1\lib\net\Rhino.Mocks.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -65,6 +67,7 @@
     <Reference Include="TechTalk.SpecFlow">
       <HintPath>..\packages\SpecFlow.1.9.0\lib\net35\TechTalk.SpecFlow.dll</HintPath>
     </Reference>
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
@@ -76,6 +79,12 @@
     </Compile>
     <Compile Include="SpecFlowNUnitExtension.cs" />
     <Compile Include="Tests\Modules\DeviceModuleTests.cs" />
+    <Compile Include="Tests\Modules\WpfWebBrowserControllerTests.cs" />
+    <Compile Include="Tests\Modules\WpfWebBrowserControllerTests.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WpfWebBrowserControllerTests.feature</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -83,6 +92,10 @@
     <None Include="Tests\Modules\DeviceModuleTests.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>DeviceModuleTests.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Tests\Modules\WpfWebBrowserControllerTests.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>WpfWebBrowserControllerTests.feature.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>

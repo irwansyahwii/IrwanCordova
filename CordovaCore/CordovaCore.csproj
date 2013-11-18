@@ -52,8 +52,9 @@
     <Compile Include="ICordovaCallBack.cs" />
     <Compile Include="ICordovaModule.cs" />
     <Compile Include="ModuleNames.cs" />
-    <Compile Include="Modules\CordovaModules.cs" />
+    <Compile Include="CordovaModules.cs" />
     <Compile Include="Modules\Device.cs" />
+    <Compile Include="Modules\Network.cs" />
     <Compile Include="Windows7\CordovaWindows7App.cs" />
     <Compile Include="HtmlInteropClass.cs" />
     <Compile Include="IHtmlInteropClass.cs" />

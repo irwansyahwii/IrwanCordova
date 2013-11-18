@@ -18,9 +18,10 @@ namespace CordovaCore.Wpf
 
     public WpfWebBrowserController( IHtmlInteropClass htmlInteropClass
       , ISystemLog systemLog)
-    {
+    {      
       CurrentExecutionState = ExecutionStates.Starting;
       HtmlInteropClass = htmlInteropClass;
+      HtmlInteropClass.CordovaCallback = this;
       SystemLog = systemLog;
     }
 
@@ -44,16 +45,16 @@ namespace CordovaCore.Wpf
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    void WebBrowserControlPreviewKeyDown( object sender, System.Windows.Input.KeyEventArgs e )
+    protected void WebBrowserControlPreviewKeyDown( object sender, System.Windows.Input.KeyEventArgs e )
     {
       e.Handled = true;
     }
 
     private void WebBrowserCotrolLoadCompleted( object sender, System.Windows.Navigation.NavigationEventArgs e )
-    {
-      //InvokeJS( "cordova.require('cordova/channel').onNativeReady.fire();" );
+    {      
       ChangeExecutionStateTo( ExecutionStates.NativeReady );
-      InvokeJSRoutine( "abcd()" );
+      InvokeJSRoutine( "cordova.require('cordova/channel').onNativeReady.fire();" );
+      //InvokeJSRoutine( "abcd()" );
       
     }
     void WebBrowserCotrolNavigated( object sender, System.Windows.Navigation.NavigationEventArgs e )

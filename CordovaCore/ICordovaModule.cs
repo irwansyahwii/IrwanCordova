@@ -8,7 +8,7 @@ namespace CordovaCore
 {
   public interface ICordovaModule
   {
-    void Execute(string callbackId, string action, string args, object result);
+    void Execute(string callbackId, ICordovaCallBack cordovaCallback, string action, string args, object result);
     void Initialize();
   }
 }

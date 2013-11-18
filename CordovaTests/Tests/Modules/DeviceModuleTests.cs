@@ -49,7 +49,7 @@ namespace CordovaTests.Tests.Modules
     [When( @"Device\.AcquireUniqueId\(\) is called" )]
     public void WhenDevice_AcquireUniqueIdIsCalled()
     {
-      Device = new Device( null, null, null, null );
+      Device = new Device( null, null, null);
       Device.DummyGuid = Guid.Parse(GuidString);
       Device.Call( "AcquireUniqueId", null );
     }
@@ -146,7 +146,7 @@ namespace CordovaTests.Tests.Modules
       osVersionInfo.Stub(x => x.MinorVersion).Return(1);
 
 
-      Device = MockRepository.GeneratePartialMock<Device>(cordovaCallback, osVersionInfo, settings);
+      Device = MockRepository.GeneratePartialMock<Device>( osVersionInfo, settings, MockRepository.GenerateMock<ISystemLog>());
 
       string resultTemplate = "uuid:'{0}',name:'{1}',platform:'{2}',version:'{3}.{4}',cordova:'{5}'";
 
@@ -159,8 +159,8 @@ namespace CordovaTests.Tests.Modules
 
       cordovaCallback.Expect( x => x.SuccessCallback( callbackId, false, result ) );
 
-      Device.Expect( x => x.Call( "GetDeviceInfo", new string[] { callbackId } ) ).CallOriginalMethod();
-      Device.Execute( "1", action, string.Empty, string.Empty );
+      Device.Expect( x => x.Call( "GetDeviceInfo", new object[] { callbackId, cordovaCallback } ) ).CallOriginalMethod();
+      Device.Execute( "1", cordovaCallback, action, string.Empty, string.Empty );
 
     }
 

@@ -39,11 +39,15 @@ namespace CordovaWpfApplicationComposer
       private static void RegisterCordovaModules()
       {
         ObjectFactory.Configure( x => x.For<ICordovaModule>().Singleton().Use<Device>().Named( ModuleNames.Device ) );
+        ObjectFactory.Configure( x => x.For<ICordovaModule>().Singleton().Use<Network>().Named( ModuleNames.Network ) );
         
         CordovaModules.Map = new Dictionary<string, ICordovaModule>();
         CordovaModules.Map.Add( ModuleNames.Device, ObjectFactory.GetNamedInstance<ICordovaModule>( ModuleNames.Device ) );
+        CordovaModules.Map.Add( ModuleNames.Network, ObjectFactory.GetNamedInstance<ICordovaModule>( ModuleNames.Network ) );
+
         CordovaModules.CordovaModulesByInitializationOrder = new List<ICordovaModule>();
         CordovaModules.CordovaModulesByInitializationOrder.Add( CordovaModules.Map[ ModuleNames.Device ] );
+        CordovaModules.CordovaModulesByInitializationOrder.Add( CordovaModules.Map[ ModuleNames.Network ] );
       }
 
       #endregion

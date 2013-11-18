@@ -23,7 +23,7 @@
 
 function abcd() {
     //cordova.require('cordova/channel').onCordovaInfoReady.fire();
-    cordova.require('cordova/channel').onCordovaConnectionReady.fire();
+    //cordova.require('cordova/channel').onCordovaConnectionReady.fire();
     cordova.require('cordova/channel').onNativeReady.fire();
 }
 

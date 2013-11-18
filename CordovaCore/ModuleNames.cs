@@ -9,5 +9,6 @@ namespace CordovaCore
   public static class ModuleNames
   {
     public const string Device = "Device";
+    public const string Network = "NetworkStatus";
   }
 }

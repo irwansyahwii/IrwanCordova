@@ -12,9 +12,11 @@ namespace CordovaCore
   public class HtmlInteropClass : CordovaCore.IHtmlInteropClass
   {
     protected ISystemLog SystemLog;
-    public HtmlInteropClass( ISystemLog systemLog )
+    public ICordovaCallBack CordovaCallback { get; set; }
+    
+    public HtmlInteropClass( ISystemLog systemLog)
     {
-      SystemLog = systemLog;
+      SystemLog = systemLog;      
     }
 
     public void CordovaExec(string callbackId, string service, string action, string args)
@@ -23,18 +25,20 @@ namespace CordovaCore
       {
         if( CordovaModules.Map.ContainsKey( service ) )
         {
-          CordovaModules.Map[ service ].Execute( callbackId, action, args, string.Empty );
+          CordovaModules.Map[ service ].Execute( callbackId, CordovaCallback, action, args, string.Empty );
         }
         else
         {
           //throw service not found
+          CordovaCallback.ErrorCallback( callbackId, false, CallbackStatuses.ClassNotFoundException, string.Empty );
         }
 
       }
       catch( Exception ex)
-      {
+      {        
         SystemLog.LogException( ex, "HtmlInteropClass.CordovaExec" );
-        throw ex;
+        CordovaCallback.ErrorCallback( callbackId, false, CallbackStatuses.GenericError, ex.ToString() );
+        //throw ex;
       }
     }
 
