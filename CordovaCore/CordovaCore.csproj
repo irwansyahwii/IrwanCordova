@@ -39,6 +39,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -51,10 +52,13 @@
     <Compile Include="CompositionRoot.cs" />
     <Compile Include="ICordovaCallBack.cs" />
     <Compile Include="ICordovaModule.cs" />
+    <Compile Include="IDynamicDialog.cs" />
     <Compile Include="ModuleNames.cs" />
     <Compile Include="CordovaModules.cs" />
+    <Compile Include="Modules\CordovaModuleBase.cs" />
     <Compile Include="Modules\Device.cs" />
     <Compile Include="Modules\Network.cs" />
+    <Compile Include="Modules\Notification.cs" />
     <Compile Include="Windows7\CordovaWindows7App.cs" />
     <Compile Include="HtmlInteropClass.cs" />
     <Compile Include="IHtmlInteropClass.cs" />
@@ -65,6 +69,13 @@
     <Compile Include="Wpf\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Wpf\ModalDialog.xaml.cs">
+      <DependentUpon>ModalDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Wpf\WpfCustomDialog.cs" />
+    <Compile Include="Wpf\WpfDynamicDialog.xaml.cs">
+      <DependentUpon>WpfDynamicDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Wpf\WpfWebBrowserController.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -74,6 +85,14 @@
     <Page Include="Wpf\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Wpf\ModalDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Wpf\WpfDynamicDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

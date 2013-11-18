@@ -480,18 +480,13 @@
                     var i = c.length;
                     var len = i;
                     this.i++;
-                    if (this.i == 3)
-                        alert('inside join func');
 
                     var f = function () {
                         if (!(--i)) h();
                     };
                     for (var j = 0; j < len; j++) {
-                        if (this.i == 3)
-                            alert('j:' + j + ', c[j].fired:' + c[j].fired);
                         !c[j].fired ? c[j].subscribeOnce(f) : i--;
                     }
-                    if (this.i == 3) alert('i: ' + i);
                     if (!i) h();
                 },
                 create: function (type, opts) {
@@ -622,7 +617,6 @@
         Channel.prototype.fire = function (e) {
             if (this.enabled) {
                 var fail = false;
-                alert('channelName: ' + this.type);
                 this.fired = true;
                 for (var item in this.handlers) {
                     var handler = this.handlers[item];
@@ -5282,7 +5276,6 @@
         var channel = require("cordova/channel"),
             _self = {
                 boot: function () {
-                    alert('booting');
                     /**
                      * Create all cordova objects once page has fully loaded and native side is ready.
                      */
@@ -5312,12 +5305,10 @@
 
                         // Fire onDeviceReady event once all constructors have run and
                         // cordova info has been received from native side.
-                        alert('calling channel.join');
 
                         //channel.onDeviceReady.fire();
 
                         channel.join(function () {
-                            alert('calling deviceready');
                             require('cordova').fireDocumentEvent('deviceready');
                         }, channel.deviceReadyChannelsArray);
 

@@ -76,7 +76,7 @@ namespace CordovaCore.Wpf
     protected object InvokeJSRoutine(string script)
     {
       object[] args = { script };
-      return WebBrowserControl.InvokeScript( "eval", args ).ToString();
+      return WebBrowserControl.InvokeScript( "eval", args );
     }
 
     #region IWebBrowserController Members
@@ -136,7 +136,30 @@ namespace CordovaCore.Wpf
 
     public void ErrorCallback( string callbackId, bool isKeepCallback, CallbackStatuses callbackStatus, string message )
     {
-      throw new NotImplementedException();
+
+      string jsRoutine = "window.cordova.callbackError('{0}',[status:{1},keepCallback:{2},message:{3}]);";
+
+      message = "test";
+      if( string.IsNullOrEmpty( message ) )
+      {
+        message = "\"\"";
+      }
+      if( !message.StartsWith( "\"" ) )
+      {
+        message = "\"" + message;
+      }
+      if( !message.EndsWith( "\"" ) )
+      {
+        message = message + "\"";
+      }
+
+      string statusString = string.IsNullOrEmpty( message ) ? error_string_from_code( CallbackStatuses.NoResult ) : 
+        error_string_from_code( CallbackStatuses.Ok );
+
+      string result = string.Format( jsRoutine, callbackId, statusString, isKeepCallback ? "true" : "false", message );
+      result = result.Replace( "[", "{" ).Replace( "]", "}" );
+
+      InvokeJSRoutine( result );            
     }
 
     #endregion

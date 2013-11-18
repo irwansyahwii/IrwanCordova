@@ -926,6 +926,7 @@ module.exports = function exec(success, fail, service, action, args) {
             try {
                 
                 if (window.external) {
+                    console.log("adas");
                     return window.external.CordovaExec(callbackId, service, action, JSON.stringify(args));
                 }
                 else {

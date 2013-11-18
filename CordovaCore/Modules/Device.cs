@@ -9,7 +9,7 @@ using ReusableToolkits.Interfaces;
 
 namespace CordovaCore.Modules
 {
-  public class Device : ICordovaModule
+  public class Device : CordovaModuleBase, ICordovaModule
   {    
     protected IOSVersionInfo OSVersionInfo;
     protected ISettings Settings;
@@ -40,7 +40,7 @@ namespace CordovaCore.Modules
       SystemLog.LogInfo( "Device module initialized" );
     }
 
-    protected virtual void GetDeviceInfo(string callbackId, ICordovaCallBack callback)
+    protected virtual string GetDeviceInfo(string callbackId, ICordovaCallBack callback)
     {
       _guardUtil.GuardParamStringNotEmpty( callbackId, "callbackId", "GetDeviceInfo" );
       _guardUtil.GuardParamNotNull( callback, "callback", "GetDeviceInfo" );
@@ -55,14 +55,17 @@ namespace CordovaCore.Modules
         , "2.1.0") + "}";
 
       callback.SuccessCallback( callbackId, false, result );
+
+      return result;
     }
 
-    public void Execute( string callbackId, ICordovaCallBack cordovaCallback, string action, string args, object result )
+    public string Execute( string callbackId, ICordovaCallBack cordovaCallback, string action, string args, object result )
     {
       if( string.Compare( "getDeviceInfo", action, false ) == 0)
       {
-        GetDeviceInfo( callbackId, cordovaCallback );
+        return GetDeviceInfo( callbackId, cordovaCallback );
       }
+      return ThrowMemberNotFound( action );
     }
 
     #endregion

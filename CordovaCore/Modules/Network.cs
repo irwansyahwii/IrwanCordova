@@ -7,19 +7,21 @@ using System.Threading.Tasks;
 
 namespace CordovaCore.Modules
 {
-  public class Network : ICordovaModule
+  public class Network : CordovaModuleBase, ICordovaModule
   {
     #region ICordovaModule Members
 
-    public void Execute( string callbackId, ICordovaCallBack cordovaCallback, string action, string args, object result )
+    public string Execute( string callbackId, ICordovaCallBack cordovaCallback, string action, string args, object result )
     {
       if( action.Equals( "getConnectionInfo" ) )
       {
-        GetNetworkInterfaceType( callbackId, cordovaCallback );
-      }      
+        return GetNetworkInterfaceType( callbackId, cordovaCallback );
+      }
+
+      return ThrowMemberNotFound( action );
     }
 
-    private static void GetNetworkInterfaceType( string callbackId, ICordovaCallBack cordovaCallback )
+    protected string  GetNetworkInterfaceType( string callbackId, ICordovaCallBack cordovaCallback )
     {
       string networkType = "unknown";
       NetworkInterface[] ifaceList = NetworkInterface.GetAllNetworkInterfaces();
@@ -60,6 +62,7 @@ namespace CordovaCore.Modules
       }
       networkType = string.Format( "'{0}'", networkType );
       cordovaCallback.SuccessCallback( callbackId, false, networkType );
+      return networkType;
     }
 
     public void Initialize()

@@ -21,6 +21,12 @@ namespace CordovaCore
 
     public void CordovaExec(string callbackId, string service, string action, string args)
     {
+      SystemLog.LogInfo( "Receiving command callbackId:{0}, service:{1}, action:{2}, args:{3}"
+        , callbackId
+        , service
+        , action
+        , args );
+
       try
       {
         if( CordovaModules.Map.ContainsKey( service ) )

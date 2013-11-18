@@ -10,5 +10,6 @@ namespace CordovaCore
   {
     public const string Device = "Device";
     public const string Network = "NetworkStatus";
+    public const string Notification = "Notification";
   }
 }
